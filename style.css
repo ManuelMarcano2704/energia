@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.etiqueta-beta {
+    background-color: #ffd700;
+    color: #000;
+    font-size: 12px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.seccion-configuracion, .seccion-formulario {
+    background: #fafafa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.btn-eliminar {
+    background-color: #ff4d4d;
+    width: auto;
+    padding: 5px 10px;
+}
+
+.seccion-resultados {
+    text-align: center;
+    background: #e3f2fd;
+    padding: 15px;
+    border: 1px solid #90caf9;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.proximamente {
+    text-align: center;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    color: #777;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.oculto {
+    display: none;
+}
+
+#error-msg {
+    color: #ff4d4d;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}

@@ -1,4 +1,3 @@
-/* Variables de Colores y Estilos Globale */
 :root {
     --bg-main: #f0f4f8;
     --card-bg: #ffffff;
@@ -11,7 +10,7 @@
     --border-color: #e2e8f0;
     --radius-lg: 16px;
     --radius-md: 10px;
-    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -31,7 +30,11 @@ body {
     padding: 20px;
 }
 
-/* Tarjeta Principal */
+/* Ocultar los checkboxes de control */
+.device-toggle {
+    display: none;
+}
+
 .app-card {
     background: var(--card-bg);
     width: 100%;
@@ -42,7 +45,6 @@ body {
     border: 1px solid var(--border-color);
 }
 
-/* Encabezado */
 .app-header {
     text-align: center;
     margin-bottom: 24px;
@@ -55,14 +57,9 @@ body {
     gap: 8px;
 }
 
-.brand .icon {
-    font-size: 24px;
-}
-
 .brand h1 {
     font-size: 26px;
     font-weight: 700;
-    color: var(--text-primary);
 }
 
 .badge {
@@ -80,7 +77,6 @@ body {
     margin-top: 4px;
 }
 
-/* Secciones Generales */
 .card-section {
     background: #f8fafc;
     border: 1px solid var(--border-color);
@@ -99,10 +95,8 @@ body {
 .section-title h3 {
     font-size: 15px;
     font-weight: 600;
-    color: var(--text-primary);
 }
 
-/* Métricas / Resumen */
 .metrics-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -137,7 +131,6 @@ body {
     font-size: 22px;
     font-weight: 700;
     margin: 6px 0 2px 0;
-    color: var(--text-primary);
 }
 
 .metric-value small {
@@ -145,17 +138,10 @@ body {
     font-weight: 500;
 }
 
-.metric-sub {
-    font-size: 11px;
-    color: var(--text-secondary);
-}
-
-/* Formularios */
 .input-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-bottom: 10px;
 }
 
 .input-group label {
@@ -164,7 +150,7 @@ body {
     color: var(--text-secondary);
 }
 
-input {
+.readonly-input {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid var(--border-color);
@@ -172,61 +158,49 @@ input {
     font-size: 14px;
     background: #ffffff;
     outline: none;
-    transition: border-color 0.2s;
 }
 
-input:focus {
+.instruction-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+/* Botones estilo Chips Interactivos */
+.selector-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chip:hover {
+    background: var(--accent-light);
     border-color: var(--accent-blue);
 }
 
-.input-with-symbol {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-with-symbol .currency {
-    position: absolute;
-    left: 12px;
-    color: var(--text-secondary);
-    font-size: 14px;
-}
-
-.input-with-symbol input {
-    padding-left: 26px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-/* Botón */
-.btn-primary {
-    width: 100%;
-    background: var(--text-primary);
-    color: #ffffff;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 6px;
-}
-
-.btn-primary:hover {
-    background: #334155;
-}
-
-/* Lista de Dispositivos */
+/* Lista de Aparatos Base (Oculta por defecto) */
 .device-list {
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    position: relative;
+    min-height: 40px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+    padding: 10px;
 }
 
 .device-item {
@@ -234,15 +208,15 @@ input:focus {
     border: 1px solid var(--border-color);
     padding: 12px;
     border-radius: 8px;
-    display: flex;
+    display: none; /* Oculto hasta que se seleccione */
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
 }
 
 .device-info strong {
     display: block;
     font-size: 14px;
-    color: var(--text-primary);
 }
 
 .device-info span {
@@ -250,8 +224,10 @@ input:focus {
     color: var(--text-secondary);
 }
 
-.device-cost {
-    text-align: right;
+.device-action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .device-cost .price {
@@ -261,49 +237,38 @@ input:focus {
     color: var(--accent-green);
 }
 
-.device-cost .kwh {
-    font-size: 11px;
-    color: var(--text-secondary);
-}
-
-/* Desplegable interactivo CSS (<details>) */
-.accordion-section {
+.btn-delete {
+    background: #fee2e2;
+    color: #ef4444;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 6px;
     cursor: pointer;
-}
-
-.accordion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 600;
-    list-style: none;
-}
-
-.accordion-header::-webkit-details-marker {
-    display: none;
-}
-
-.accordion-content {
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-color);
-    font-size: 13px;
-    color: var(--text-secondary);
-}
-
-.accordion-content ul {
-    padding-left: 18px;
-}
-
-.accordion-content li {
-    margin-bottom: 6px;
-}
-
-/* Footer */
-.app-footer {
-    text-align: center;
     font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 10px;
+    font-weight: bold;
 }
+
+.btn-delete:hover {
+    background: #fca5a5;
+}
+
+/* MAGIA DEL CSS: Mostrar elementos y actualizar totales al marcar los inputs */
+
+/* Si se marca el item 1 */
+#toggle-item1:checked ~ .app-card .empty-state { display: none; }
+#toggle-item1:checked ~ .app-card .item-1 { display: flex; }
+
+/* Si se marca el item 2 */
+#toggle-item2:checked ~ .app-card .empty-state { display: none; }
+#toggle-item2:checked ~ .app-card .item-2 { display: flex; }
+
+/* Si se marca el item 3 */
+#toggle-item3:checked ~ .app-card .empty-state { display: none; }
+#toggle-item3:checked ~ .app-card .item-3 { display: flex; }
+
+
+/* Actualización de Totales combinando selecciones */
+/* 1 seleccionado */
+#toggle-item1:checked:not(#toggle-item2:checked):not(#toggle-item3:checked) ~ .app-card #val-dolares { content: ""; }
+#toggle-item1:checked:not(#toggle-item2:checked):not(#toggle-item3:checked) ~ .app-card #val-dolares::before { content: "$18.00"; }
+#toggle-item1:checked:not(#toggle-item2:checked):not(#toggle-item3:checked) ~ .app-card #val-dolares span { display: inline; }

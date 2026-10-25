@@ -3,42 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Energía (BETA)</title>
+    <title>EcoWatt - Calculadora de Energía</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="contenedor">
-        <header>
-            <h1>Medidor de Energía <span class="etiqueta-beta">PRO</span></h1>
-            <p>Calcula tu gasto eléctrico mensual en dólares (USD).</p>
+
+    <div class="app-card">
+        <!-- Encabezado con badge -->
+        <header class="app-header">
+            <div class="brand">
+                <span class="icon">⚡</span>
+                <h1>EcoWatt</h1>
+                <span class="badge">BETA v1.0</span>
+            </div>
+            <p class="subtitle">Mide y optimiza el consumo eléctrico de tu hogar</p>
         </header>
 
-        <div class="seccion-configuracion">
-            <label>Costo por kWh (USD):</label>
-            <input type="number" id="precio-kwh" value="0.15" step="0.01">
+        <!-- Configuración de Tarifa -->
+        <div class="card-section tariff-section">
+            <div class="section-title">
+                <span>⚙️</span>
+                <h3>Configuración de Tarifa</h3>
+            </div>
+            <div class="input-group">
+                <label for="rate">Costo por kWh (USD):</label>
+                <div class="input-with-symbol">
+                    <span class="currency">$</span>
+                    <input type="number" id="rate" value="0.15" readonly>
+                </div>
+            </div>
         </div>
 
-        <div class="seccion-formulario">
-            <input type="text" id="nombre-aparato" placeholder="Nombre (Ej. Televisor)">
-            <input type="number" id="watts" placeholder="Consumo en Watts (Ej. 100)">
-            <input type="number" id="horas" placeholder="Horas de uso al día (Ej. 4)">
-            <p id="error-msg" class="oculto">Por favor, llena todos los datos correctamente.</p>
-            <button onclick="agregarAparato()">Agregar Aparato</button>
+        <!-- Tarjetas de Resumen (Simuladas en CSS puro) -->
+        <div class="metrics-grid">
+            <div class="metric-card primary">
+                <span class="metric-label">Gasto Mensual Estimado</span>
+                <span class="metric-value">$32.40 <small>USD</small></span>
+                <span class="metric-sub">Basado en tus electrodomésticos</span>
+            </div>
+            <div class="metric-card accent">
+                <span class="metric-label">Consumo Total</span>
+                <span class="metric-value">216 <small>kWh/mes</small></span>
+                <span class="metric-sub">Promedio residencial</span>
+            </div>
         </div>
 
-        <div class="seccion-resultados">
-            <h2>Gasto Mensual: $<span id="total-dolares">0.00</span> USD</h2>
-            <p>Consumo total: <span id="total-kwh">0.0</span> kWh al mes</p>
+        <!-- Formulario Estático -->
+        <form class="card-section form-section" action="#" method="get">
+            <div class="section-title">
+                <span>➕</span>
+                <h3>Registrar Electrodoméstico</h3>
+            </div>
+            
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Nombre del aparato</label>
+                    <input type="text" placeholder="Ej. Refrigerador, TV, Aire" required>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Consumo (Watts)</label>
+                        <input type="number" placeholder="Ej. 150" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Horas uso / día</label>
+                        <input type="number" placeholder="Ej. 8" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-primary">Añadir a la Lista</button>
+        </form>
+
+        <!-- Lista Interactiva con CSS Puro (Uso de details/summary) -->
+        <div class="card-section list-section">
+            <div class="section-title">
+                <span>📋</span>
+                <h3>Electrodomésticos en Uso</h3>
+            </div>
+
+            <ul class="device-list">
+                <li class="device-item">
+                    <div class="device-info">
+                        <strong>Refrigerador Mod. Eco</strong>
+                        <span>400W • 24h/día</span>
+                    </div>
+                    <div class="device-cost">
+                        <span class="price">$18.00 USD</span>
+                        <span class="kwh">120 kWh/mes</span>
+                    </div>
+                </li>
+
+                <li class="device-item">
+                    <div class="device-info">
+                        <strong>Televisor Smart 55"</strong>
+                        <span>120W • 5h/día</span>
+                    </div>
+                    <div class="device-cost">
+                        <span class="price">$2.70 USD</span>
+                        <span class="kwh">18 kWh/mes</span>
+                    </div>
+                </li>
+
+                <li class="device-item">
+                    <div class="device-info">
+                        <strong>Aire Acondicionado</strong>
+                        <span>1000W • 8h/día</span>
+                    </div>
+                    <div class="device-cost">
+                        <span class="price">$11.70 USD</span>
+                        <span class="kwh">78 kWh/mes</span>
+                    </div>
+                </li>
+            </ul>
         </div>
 
-        <ul id="lista-aparatos"></ul>
+        <!-- Sección Desplegable sin JS -->
+        <details class="card-section accordion-section">
+            <summary class="accordion-header">
+                <span>💡 Consejos de Ahorro Energético</span>
+                <span class="arrow">▼</span>
+            </summary>
+            <div class="accordion-content">
+                <ul>
+                    <li>Desconecta los cargadores y dispositivos en modo standby.</li>
+                    <li>Limpia los filtros de tu aire acondicionado regularmente.</li>
+                    <li>Aprovecha la luz natural en horas de la mañana.</li>
+                </ul>
+            </div>
+        </details>
 
-        <div class="proximamente">
-            <p>🚧 Próximamente: consejos de ahorro.</p>
-        </div>
+        <!-- Footer / Estado -->
+        <footer class="app-footer">
+            <span>🚧 Versión estática optimizada para GitHub Pages</span>
+        </footer>
     </div>
 
-    
-        
-    </body>
+</body>
 </html>

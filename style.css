@@ -1,111 +1,309 @@
+/* Variables de Colores y Estilos Globale */
+:root {
+    --bg-main: #f0f4f8;
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --accent-blue: #2563eb;
+    --accent-light: #eff6ff;
+    --accent-green: #10b981;
+    --accent-green-light: #ecfdf5;
+    --border-color: #e2e8f0;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     padding: 20px;
 }
 
-.contenedor {
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Tarjeta Principal */
+.app-card {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 520px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    border: 1px solid var(--border-color);
 }
 
-header h1 {
-    margin-top: 0;
+/* Encabezado */
+.app-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.brand .icon {
     font-size: 24px;
 }
 
-.etiqueta-beta {
-    background-color: #ffd700;
-    color: #000;
-    font-size: 12px;
-    padding: 3px 6px;
-    border-radius: 4px;
-    vertical-align: middle;
+.brand h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
-.seccion-configuracion, .seccion-formulario {
-    background: #fafafa;
-    padding: 15px;
-    border: 1px solid #ddd;
+.badge {
+    background-color: var(--accent-light);
+    color: var(--accent-blue);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* Secciones Generales */
+.card-section {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
     margin-bottom: 20px;
-    border-radius: 5px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.section-title h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Métricas / Resumen */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.metric-card {
+    padding: 16px;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-card.primary {
+    background: var(--accent-light);
+    border: 1px solid #bfdbfe;
+}
+
+.metric-card.accent {
+    background: var(--accent-green-light);
+    border: 1px solid #a7f3d0;
+}
+
+.metric-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.metric-value {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 6px 0 2px 0;
+    color: var(--text-primary);
+}
+
+.metric-value small {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.metric-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+/* Formularios */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
 }
 
 input {
     width: 100%;
-    padding: 8px;
-    margin: 5px 0 15px 0;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
-button {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    border: none;
+input:focus {
+    border-color: var(--accent-blue);
+}
+
+.input-with-symbol {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-symbol .currency {
+    position: absolute;
+    left: 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.input-with-symbol input {
+    padding-left: 26px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* Botón */
+.btn-primary {
     width: 100%;
+    background: var(--text-primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
-    border-radius: 4px;
+    transition: background 0.2s;
+    margin-top: 6px;
 }
 
-button:hover {
-    background-color: #555;
+.btn-primary:hover {
+    background: #334155;
 }
 
-.btn-eliminar {
-    background-color: #ff4d4d;
-    width: auto;
-    padding: 5px 10px;
+/* Lista de Dispositivos */
+.device-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.seccion-resultados {
-    text-align: center;
-    background: #e3f2fd;
-    padding: 15px;
-    border: 1px solid #90caf9;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
+.device-item {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.proximamente {
-    text-align: center;
-    border: 2px dashed #ccc;
-    padding: 10px;
-    color: #777;
-    margin-top: 20px;
+.device-info strong {
+    display: block;
     font-size: 14px;
+    color: var(--text-primary);
 }
 
-.oculto {
+.device-info span {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.device-cost {
+    text-align: right;
+}
+
+.device-cost .price {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent-green);
+}
+
+.device-cost .kwh {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+/* Desplegable interactivo CSS (<details>) */
+.accordion-section {
+    cursor: pointer;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    list-style: none;
+}
+
+.accordion-header::-webkit-details-marker {
     display: none;
 }
 
-#error-msg {
-    color: #ff4d4d;
+.accordion-content {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
     font-size: 13px;
-    margin-top: -10px;
-    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.accordion-content ul {
+    padding-left: 18px;
+}
+
+.accordion-content li {
+    margin-bottom: 6px;
+}
+
+/* Footer */
+.app-footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 10px;
 }
